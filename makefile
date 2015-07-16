@@ -13,7 +13,7 @@ ifeq ($(CXX), clang++)
     GCOV     := gcov-4.6
 else
     CXX      := g++-4.8
-    COVFLAGS := -fprofile-arcs -ftest-coverage
+    COVFLAGS := -fprofile-arcs -ftest-coverage -r
     GCOV     := gcov-4.8
 endif
 
