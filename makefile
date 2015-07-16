@@ -5,8 +5,6 @@ FILES :=                              \
     Graph.h                         \
     Graph.log                       \
     html                              \
-    RunGraph.c++                    \
-    RunGraph.out                    \
     TestGraph.c++                   \
     TestGraph.out
 
@@ -23,7 +21,7 @@ CXXFLAGS := -pedantic -std=c++11 -Wall
 LDFLAGS  := -lgtest -lgtest_main -pthread
 VALGRIND := valgrind
 
-all: RunGraph TestGraph
+all: TestGraph
 
 check:
 	@for i in $(FILES);                                         \
@@ -35,8 +33,6 @@ clean:
 	rm -f *.gcda
 	rm -f *.gcno
 	rm -f *.gcov
-	rm -f RunGraph
-	rm -f RunGraph.out
 	rm -f TestGraph
 	rm -f TestGraph.out
 
@@ -48,7 +44,7 @@ test: TestGraph.out
 graph-tests:
 	git clone https://github.com/cs378-summer-2015/graph-tests.git
 
-html: Doxyfile Graph.h RunGraph.c++ TestGraph.c++
+html: Doxyfile Graph.h TestGraph.c++
 	doxygen Doxyfile
 
 Graph.log:
