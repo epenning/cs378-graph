@@ -10,11 +10,11 @@ FILES :=                              \
 
 ifeq ($(CXX), clang++)
     COVFLAGS := --coverage
-    GCOV     := gcov-4.6
+    GCOV     := gcov-4.6 -r
 else
     CXX      := g++-4.8
-    COVFLAGS := -fprofile-arcs -ftest-coverage -r
-    GCOV     := gcov-4.8
+    COVFLAGS := -fprofile-arcs -ftest-coverage
+    GCOV     := gcov-4.8 -r
 endif
 
 CXXFLAGS := -pedantic -std=c++11 -Wall
