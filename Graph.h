@@ -28,19 +28,58 @@ class Graph {
         // typedefs
         // --------
 
-        typedef int                                         vertex_descriptor;  
-        typedef pair<vertex_descriptor, vertex_descriptor>  edge_descriptor;
-        typedef vector<edge_descriptor>                     edge_vec;
-        typedef pair<vertex_descriptor, edge_vec>           vertex;
-        typedef vector<vertex>                              vertex_vec;
-
-
-        typedef int*                                        vertex_iterator;    // fix!
-        typedef typename vector<edge_descriptor>::iterator  edge_iterator;      // fix!
-        typedef int*                                        adjacency_iterator; // fix!
+        typedef int                                           vertex_descriptor;  
+        typedef pair<vertex_descriptor, vertex_descriptor>    edge_descriptor;
+        typedef vector<edge_descriptor>                       edge_vec;
+        typedef pair<vertex_descriptor, edge_vec>             vertex_rep;
+        typedef vector<vertex_rep>                            vertex_vec;
 
         typedef std::size_t vertices_size_type;
         typedef std::size_t edges_size_type;
+
+        typedef typename edge_vec::iterator                   edge_iterator;
+
+        // ---------------
+        // vertex_iterator
+        // ---------------
+
+        class vertex_iterator : public vertex_vec::iterator {
+            public:
+                inline vertex_iterator(vertex_vec::iterator const &that)
+                    : vertex_vec::iterator(that) {}
+                vertex_descriptor operator * () {
+                    const vertex_rep& v = vertex_vec::iterator::operator*();
+                    return v.first;
+                }
+        };
+/*
+        // -------------
+        // edge_iterator
+        // -------------
+
+        class edge_iterator : vertex_vec::iterator {
+            public:
+                inline edge_iterator(vertex_vec::iterator const &that)
+                    : vertex_vec::iterator(that) {}
+                vertex_descriptor operator * () {
+                    const vertex_rep& v = vertex_vec::iterator::operator*();
+                    return v.first;
+                }
+        };*/
+
+        // ------------------
+        // adjacency_iterator
+        // ------------------
+
+        class adjacency_iterator : public edge_vec::iterator {
+            public:
+                inline adjacency_iterator(edge_vec::iterator const &that)
+                    : edge_vec::iterator(that) {}
+                vertex_descriptor operator * () {
+                    const edge_descriptor& e = edge_vec::iterator::operator*();
+                    return e.second;
+                }
+        };
 
     public:
         // --------
@@ -57,8 +96,8 @@ class Graph {
          */
         friend std::pair<edge_descriptor, bool> add_edge (vertex_descriptor u, vertex_descriptor v, Graph&) {
             // <your code>
-            edge_descriptor ed = edge_descriptor(0,0);
-            bool            b  = false;
+            edge_descriptor ed = edge_descriptor(u,v);
+            bool            b  = true;
             return std::make_pair(ed, b);}
 
         // ----------
@@ -74,7 +113,7 @@ class Graph {
             vertex_descriptor v = g.next_vid;
             g.next_vid++;
 
-            g.adjacency.push_back(vertex(v, edge_vec()));
+            g.adjacency.push_back(vertex_rep(v, edge_vec()));
 
             return v;}
 
@@ -89,9 +128,9 @@ class Graph {
          */
         friend std::pair<adjacency_iterator, adjacency_iterator> adjacent_vertices (vertex_descriptor u, const Graph& g) {
             // <your code>
-            static int a [] = {0, 0};     // dummy data
-            adjacency_iterator b = a;
-            adjacency_iterator e = a + 2;
+            edge_vec a(2);     // dummy data
+            adjacency_iterator b = a.begin();
+            adjacency_iterator e = a.end();
             return std::make_pair(b, e);}
 
         // ----
@@ -121,7 +160,7 @@ class Graph {
          */
         friend std::pair<edge_iterator, edge_iterator> edges (const Graph& g) {
             // <your code>
-            vector<edge_descriptor> a(2);     // dummy data
+            edge_vec a(2);     // dummy data
             edge_iterator b = a.begin();
             edge_iterator e = a.end();
             return std::make_pair(b, e);}
@@ -200,11 +239,11 @@ class Graph {
          * @param g    a graph
          * @return     an iterator-range providing access to the vertex set of graph g
          */
-        friend std::pair<vertex_iterator, vertex_iterator> vertices (const Graph&) {
-            // <your code>
-            static int a [] = {0, 0};     // dummy data
-            vertex_iterator b = a;
-            vertex_iterator e = a + 2;
+        friend std::pair<vertex_iterator, vertex_iterator> vertices (const Graph& g) {
+            // extract an iterable of vertices from graph
+            vertex_vec vertices;
+            vertex_iterator b = vertices.begin();
+            vertex_iterator e = vertices.end();
             return std::make_pair(b, e);}
 
     private:
