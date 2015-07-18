@@ -241,7 +241,7 @@ class Graph {
          */
         friend std::pair<vertex_iterator, vertex_iterator> vertices (const Graph& g) {
             // extract an iterable of vertices from graph
-            vertex_vec vertices;
+            vertex_vec vertices = g.adjacency;
             vertex_iterator b = vertices.begin();
             vertex_iterator e = vertices.end();
             return std::make_pair(b, e);}
