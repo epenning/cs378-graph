@@ -28,8 +28,27 @@ class Graph {
         // typedefs
         // --------
 
-        typedef int                                           vertex_descriptor;  
-        typedef pair<vertex_descriptor, vertex_descriptor>    edge_descriptor;
+
+        typedef std::size_t vertices_size_type;
+        typedef std::size_t edges_size_type;
+
+        typedef vertices_size_type                            vertex_descriptor; 
+
+        // ----------
+        // vertex_rep
+        // ----------
+
+        class edge_descriptor : public pair<vertex_descriptor, vertex_descriptor> {
+        public:
+            inline edge_descriptor(pair<vertex_descriptor, vertex_descriptor> const &that = make_pair(vertex_descriptor(),vertex_descriptor()))
+                : pair<vertex_descriptor, vertex_descriptor>(that) {}
+            operator vertex_descriptor() const { return second; }
+        };
+
+        // --------------
+        // typedefs cont.
+        // --------------
+
         typedef vector<edge_descriptor>                       edge_vec;
 
         // ----------
@@ -38,7 +57,7 @@ class Graph {
 
         class vertex_rep : public pair<vertex_descriptor, edge_vec> {
         public:
-            inline vertex_rep(pair<vertex_descriptor, edge_vec> const &that)
+            inline vertex_rep(pair<vertex_descriptor, edge_vec> const &that = make_pair(vertex_descriptor(), edge_vec()))
                 : pair<vertex_descriptor, edge_vec>(that) {}
             operator vertex_descriptor() const { return first; }
         };
@@ -49,11 +68,9 @@ class Graph {
 
         typedef vector<vertex_rep>                            vertex_vec;
 
-        typedef std::size_t vertices_size_type;
-        typedef std::size_t edges_size_type;
-
         typedef typename vertex_vec::iterator                 vertex_iterator;
         typedef typename edge_vec::iterator                   edge_iterator;
+        typedef typename edge_vec::iterator                   adjacency_iterator;
 
 
 /*
@@ -71,20 +88,6 @@ class Graph {
                 }
         };*/
 
-        // ------------------
-        // adjacency_iterator
-        // ------------------
-
-        class adjacency_iterator : public edge_vec::iterator {
-            public:
-                inline adjacency_iterator(edge_vec::iterator const &that)
-                    : edge_vec::iterator(that) {}
-                vertex_descriptor operator * () {
-                    const edge_descriptor& e = edge_vec::iterator::operator*();
-                    return e.second;
-                }
-        };
-
     public:
         // --------
         // add_edge
@@ -98,11 +101,22 @@ class Graph {
          * @return     pair where first is new edge
          *                        second is true if edge was added, false if edge already existed 
          */
-        friend std::pair<edge_descriptor, bool> add_edge (vertex_descriptor u, vertex_descriptor v, Graph&) {
-            // <your code>
-            edge_descriptor ed = edge_descriptor(u,v);
-            bool            b  = true;
-            return std::make_pair(ed, b);}
+        friend std::pair<edge_descriptor, bool> add_edge (vertex_descriptor u, vertex_descriptor v, Graph& g) {
+            // call edge, if false add edge and make b true
+            pair<edge_descriptor, bool> uv = edge(u, v, g);
+            edge_descriptor             ed = uv.first;
+            bool                        b  = uv.second;
+            // if edge in adjacency list of u, b is true, so no adding
+            if (b) {
+                return make_pair(ed, false);
+            }
+            // add edge to edge vector of u
+            vertex_vec* vertices = &(g.adjacency);
+            // TO DO LATER - if u or v > size of adjacency, add vertices until <
+            vertex_rep& u_vertex = (*vertices)[u];
+            edge_vec&   u_edges  = u_vertex.second;
+            u_edges.push_back(ed);
+            return make_pair(ed, true);}
 
         // ----------
         // add_vertex
@@ -131,11 +145,14 @@ class Graph {
          * @return     an iterator-range providing access to the vertices adjacent to vertex u in graph g
          */
         friend std::pair<adjacency_iterator, adjacency_iterator> adjacent_vertices (vertex_descriptor u, const Graph& g) {
-            // <your code>
-            edge_vec a(2);     // dummy data
-            adjacency_iterator b = a.begin();
-            adjacency_iterator e = a.end();
-            return std::make_pair(b, e);}
+            // get edge vector from vertex u
+            const vertex_vec* vertices = &(g.adjacency);
+            // TO DO LATER - if u or v > size of adjacency, add vertices until <
+            const vertex_rep* u_vertex = &(*vertices)[u];
+            const edge_vec*   u_edges  = &u_vertex->second;
+            adjacency_iterator b = const_cast<edge_vec*>(u_edges)->begin();
+            adjacency_iterator e = const_cast<edge_vec*>(u_edges)->end();
+            return make_pair(b, e);}
 
         // ----
         // edge
@@ -149,9 +166,8 @@ class Graph {
          *                        second is true if edge existed, false otherwise
          */
         friend std::pair<edge_descriptor, bool> edge (vertex_descriptor u, vertex_descriptor v, const Graph& g) {
-            // <your code>
-            edge_descriptor ed = edge_descriptor(0,0);
-            bool            b  = true;
+            edge_descriptor ed = make_pair(u,v);
+            bool            b  = false;
             return std::make_pair(ed, b);}
 
         // -----
