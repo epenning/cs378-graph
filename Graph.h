@@ -168,7 +168,11 @@ class Graph {
         friend std::pair<edge_descriptor, bool> edge (vertex_descriptor u, vertex_descriptor v, const Graph& g) {
             edge_descriptor ed = make_pair(u,v);
             bool            b  = false;
-            return std::make_pair(ed, b);}
+            // if u->v is in adjacent vertices to u, b is true
+            pair<adjacency_iterator, adjacency_iterator> adj = adjacent_vertices(u, g);
+            if (adj.second != find(adj.first, adj.second, ed))
+                b = true;
+            return make_pair(ed, b);}
 
         // -----
         // edges
@@ -220,8 +224,7 @@ class Graph {
          * @return     the source vertex of edge e in graph g
          */
         friend vertex_descriptor source (edge_descriptor e, const Graph& g) {
-            // <your code>
-            vertex_descriptor v = 0; // fix
+            vertex_descriptor v = e.first;
             return v;}
 
         // ------
@@ -233,9 +236,8 @@ class Graph {
          * @param g    a graph
          * @return     the target vertex of edge e in graph g
          */
-        friend vertex_descriptor target (edge_descriptor, const Graph&) {
-            // <your code>
-            vertex_descriptor v = 0; // fix
+        friend vertex_descriptor target (edge_descriptor e, const Graph& g) {
+            vertex_descriptor v = e.second;
             return v;}
 
         // ------
