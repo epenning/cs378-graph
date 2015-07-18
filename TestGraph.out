@@ -1,16 +1,16 @@
-==17770== Memcheck, a memory error detector
-==17770== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==17770== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==17770== Command: ./TestGraph
-==17770== 
+==7392== Memcheck, a memory error detector
+==7392== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==7392== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==7392== Command: ./TestGraph
+==7392== 
 Running main() from gtest_main.cc
 [==========] Running 22 tests from 2 test cases.
 [----------] Global test environment set-up.
 [----------] 11 tests from TestGraph/0, where TypeParam = boost::adjacency_list<boost::setS, boost::vecS, boost::directedS, boost::no_property, boost::no_property, boost::no_property, boost::listS>
 [ RUN      ] TestGraph/0.add_vertex_1
-[       OK ] TestGraph/0.add_vertex_1 (38 ms)
+[       OK ] TestGraph/0.add_vertex_1 (36 ms)
 [ RUN      ] TestGraph/0.num_vertex_1
-[       OK ] TestGraph/0.num_vertex_1 (7 ms)
+[       OK ] TestGraph/0.num_vertex_1 (6 ms)
 [ RUN      ] TestGraph/0.vertex_1
 [       OK ] TestGraph/0.vertex_1 (4 ms)
 [ RUN      ] TestGraph/0.vertex_2
@@ -20,26 +20,26 @@ Running main() from gtest_main.cc
 [ RUN      ] TestGraph/0.add_edge_1
 [       OK ] TestGraph/0.add_edge_1 (26 ms)
 [ RUN      ] TestGraph/0.add_edge_2
-[       OK ] TestGraph/0.add_edge_2 (13 ms)
+[       OK ] TestGraph/0.add_edge_2 (9 ms)
 [ RUN      ] TestGraph/0.test_edge
-[       OK ] TestGraph/0.test_edge (24 ms)
+[       OK ] TestGraph/0.test_edge (22 ms)
 [ RUN      ] TestGraph/0.vertices_1
 [       OK ] TestGraph/0.vertices_1 (4 ms)
 [ RUN      ] TestGraph/0.vertices_2
 [       OK ] TestGraph/0.vertices_2 (3 ms)
 [ RUN      ] TestGraph/0.test_vertices
 [       OK ] TestGraph/0.test_vertices (4 ms)
-[----------] 11 tests from TestGraph/0 (151 ms total)
+[----------] 11 tests from TestGraph/0 (140 ms total)
 
 [----------] 11 tests from TestGraph/1, where TypeParam = Graph
 [ RUN      ] TestGraph/1.add_vertex_1
-[       OK ] TestGraph/1.add_vertex_1 (35 ms)
+[       OK ] TestGraph/1.add_vertex_1 (34 ms)
 [ RUN      ] TestGraph/1.num_vertex_1
 [       OK ] TestGraph/1.num_vertex_1 (6 ms)
 [ RUN      ] TestGraph/1.vertex_1
 [       OK ] TestGraph/1.vertex_1 (6 ms)
 [ RUN      ] TestGraph/1.vertex_2
-[       OK ] TestGraph/1.vertex_2 (18 ms)
+[       OK ] TestGraph/1.vertex_2 (16 ms)
 [ RUN      ] TestGraph/1.test_vertex
 [       OK ] TestGraph/1.test_vertex (3 ms)
 [ RUN      ] TestGraph/1.add_edge_1
@@ -55,99 +55,27 @@ Value of: p1.second
 Expected: false
 [  FAILED  ] TestGraph/1.test_edge, where TypeParam = Graph (9 ms)
 [ RUN      ] TestGraph/1.vertices_1
-[       OK ] TestGraph/1.vertices_1 (18 ms)
+[       OK ] TestGraph/1.vertices_1 (7 ms)
 [ RUN      ] TestGraph/1.vertices_2
-==17770== Invalid read of size 4
-==17770==    at 0x405DB0: Graph::vertex_iterator::operator*() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x418D32: TestGraph_vertices_2_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44D162: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44033C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4403D3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4404D4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44074C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x440A2D: testing::UnitTest::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40511F: main (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==  Address 0x5c7f7b0 is 0 bytes inside a block of size 32 free'd
-==17770==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==17770==    by 0x412A51: __gnu_cxx::new_allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::deallocate(std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x411A53: std::_Vector_base<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::_M_deallocate(std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40C120: std::_Vector_base<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::~_Vector_base() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4071B6: std::vector<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::~vector() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40673E: vertices(Graph const&) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x418B3E: TestGraph_vertices_2_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44D162: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44033C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4403D3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4404D4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44074C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770== 
 [       OK ] TestGraph/1.vertices_2 (3 ms)
 [ RUN      ] TestGraph/1.test_vertices
-==17770== Invalid read of size 4
-==17770==    at 0x405DB0: Graph::vertex_iterator::operator*() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x418214: TestGraph_test_vertices_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44D162: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44033C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4403D3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4404D4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44074C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x440A2D: testing::UnitTest::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40511F: main (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==  Address 0x5c7fec0 is 0 bytes inside a block of size 64 free'd
-==17770==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==17770==    by 0x412A51: __gnu_cxx::new_allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::deallocate(std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x411A53: std::_Vector_base<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::_M_deallocate(std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40C120: std::_Vector_base<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::~_Vector_base() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4071B6: std::vector<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::~vector() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40673E: vertices(Graph const&) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x41813C: TestGraph_test_vertices_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44D162: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44033C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4403D3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4404D4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44074C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770== 
-==17770== Invalid read of size 4
-==17770==    at 0x405DB0: Graph::vertex_iterator::operator*() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x418477: TestGraph_test_vertices_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44D162: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44033C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4403D3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4404D4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44074C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x440A2D: testing::UnitTest::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40511F: main (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==  Address 0x5c7fee0 is 32 bytes inside a block of size 64 free'd
-==17770==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==17770==    by 0x412A51: __gnu_cxx::new_allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::deallocate(std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x411A53: std::_Vector_base<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::_M_deallocate(std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40C120: std::_Vector_base<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::~_Vector_base() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4071B6: std::vector<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::allocator<std::pair<int, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >::~vector() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x40673E: vertices(Graph const&) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x41813C: TestGraph_test_vertices_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44D162: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44033C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4403D3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x4404D4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770==    by 0x44074C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==17770== 
-[       OK ] TestGraph/1.test_vertices (6 ms)
-[----------] 11 tests from TestGraph/1 (145 ms total)
+[       OK ] TestGraph/1.test_vertices (5 ms)
+[----------] 11 tests from TestGraph/1 (129 ms total)
 
 [----------] Global test environment tear-down
-[==========] 22 tests from 2 test cases ran. (324 ms total)
+[==========] 22 tests from 2 test cases ran. (295 ms total)
 [  PASSED  ] 20 tests.
 [  FAILED  ] 2 tests, listed below:
 [  FAILED  ] TestGraph/1.add_edge_2, where TypeParam = Graph
 [  FAILED  ] TestGraph/1.test_edge, where TypeParam = Graph
 
  2 FAILED TESTS
-==17770== 
-==17770== HEAP SUMMARY:
-==17770==     in use at exit: 0 bytes in 0 blocks
-==17770==   total heap usage: 1,036 allocs, 1,036 frees, 225,597 bytes allocated
-==17770== 
-==17770== All heap blocks were freed -- no leaks are possible
-==17770== 
-==17770== For counts of detected and suppressed errors, rerun with: -v
-==17770== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+==7392== 
+==7392== HEAP SUMMARY:
+==7392==     in use at exit: 0 bytes in 0 blocks
+==7392==   total heap usage: 1,033 allocs, 1,033 frees, 225,463 bytes allocated
+==7392== 
+==7392== All heap blocks were freed -- no leaks are possible
+==7392== 
+==7392== For counts of detected and suppressed errors, rerun with: -v
+==7392== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

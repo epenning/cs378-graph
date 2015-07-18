@@ -43,12 +43,12 @@ class Graph {
         // vertex_iterator
         // ---------------
 
-        class vertex_iterator : public vertex_vec::iterator {
+        class vertex_iterator : public vertex_vec::const_iterator {
             public:
-                inline vertex_iterator(vertex_vec::iterator const &that)
-                    : vertex_vec::iterator(that) {}
-                vertex_descriptor operator * () {
-                    const vertex_rep& v = vertex_vec::iterator::operator*();
+                inline vertex_iterator(vertex_vec::const_iterator const &that)
+                    : vertex_vec::const_iterator(that) {}
+                const vertex_descriptor& operator * () {
+                    const vertex_rep& v = vertex_vec::const_iterator::operator*();
                     return v.first;
                 }
         };
@@ -240,10 +240,9 @@ class Graph {
          * @return     an iterator-range providing access to the vertex set of graph g
          */
         friend std::pair<vertex_iterator, vertex_iterator> vertices (const Graph& g) {
-            // extract an iterable of vertices from graph
-            vertex_vec vertices = g.adjacency;
-            vertex_iterator b = vertices.begin();
-            vertex_iterator e = vertices.end();
+            const vertex_vec* vertices = &(g.adjacency);
+            vertex_iterator b = vertices->begin();
+            vertex_iterator e = vertices->end();
             return std::make_pair(b, e);}
 
     private:
