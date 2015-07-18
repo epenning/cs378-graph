@@ -31,27 +31,31 @@ class Graph {
         typedef int                                           vertex_descriptor;  
         typedef pair<vertex_descriptor, vertex_descriptor>    edge_descriptor;
         typedef vector<edge_descriptor>                       edge_vec;
-        typedef pair<vertex_descriptor, edge_vec>             vertex_rep;
+
+        // ----------
+        // vertex_rep
+        // ----------
+
+        class vertex_rep : public pair<vertex_descriptor, edge_vec> {
+        public:
+            inline vertex_rep(pair<vertex_descriptor, edge_vec> const &that)
+                : pair<vertex_descriptor, edge_vec>(that) {}
+            operator vertex_descriptor() const { return first; }
+        };
+
+        // --------------
+        // typedefs cont.
+        // --------------
+
         typedef vector<vertex_rep>                            vertex_vec;
 
         typedef std::size_t vertices_size_type;
         typedef std::size_t edges_size_type;
 
+        typedef typename vertex_vec::iterator                 vertex_iterator;
         typedef typename edge_vec::iterator                   edge_iterator;
 
-        // ---------------
-        // vertex_iterator
-        // ---------------
 
-        class vertex_iterator : public vertex_vec::const_iterator {
-            public:
-                inline vertex_iterator(vertex_vec::const_iterator const &that)
-                    : vertex_vec::const_iterator(that) {}
-                const vertex_descriptor& operator * () {
-                    const vertex_rep& v = vertex_vec::const_iterator::operator*();
-                    return v.first;
-                }
-        };
 /*
         // -------------
         // edge_iterator
@@ -113,7 +117,7 @@ class Graph {
             vertex_descriptor v = g.next_vid;
             g.next_vid++;
 
-            g.adjacency.push_back(vertex_rep(v, edge_vec()));
+            g.adjacency.push_back(vertex_rep(make_pair(v, edge_vec())));
 
             return v;}
 
@@ -241,8 +245,8 @@ class Graph {
          */
         friend std::pair<vertex_iterator, vertex_iterator> vertices (const Graph& g) {
             const vertex_vec* vertices = &(g.adjacency);
-            vertex_iterator b = vertices->begin();
-            vertex_iterator e = vertices->end();
+            vertex_iterator b = const_cast<vertex_vec*>(vertices)->begin();
+            vertex_iterator e = const_cast<vertex_vec*>(vertices)->end();
             return std::make_pair(b, e);}
 
     private:
@@ -290,7 +294,7 @@ class Graph {
          * Default constructor. Creates an empty graph object with zero vertices and zero edges.
          */
         Graph () {
-            adjacency = vector<pair<vertex_descriptor, vector<edge_descriptor>>>();
+            adjacency = vertex_vec();
             next_vid = vertex_descriptor();
             assert(valid());}
 
