@@ -550,6 +550,51 @@ TYPED_TEST(TestGraph, num_edges_1) {
     ASSERT_EQ(1, es);
 }
 
+TYPED_TEST(TestGraph, edge_3) {
+    typedef typename TestFixture::graph_type         graph_type;
+    typedef typename TestFixture::vertex_descriptor  vertex_descriptor;
+    typedef typename TestFixture::edge_descriptor    edge_descriptor;
+    typedef typename TestFixture::vertex_iterator    vertex_iterator;
+    typedef typename TestFixture::edge_iterator      edge_iterator;
+    typedef typename TestFixture::adjacency_iterator adjacency_iterator;
+    typedef typename TestFixture::vertices_size_type vertices_size_type;
+    typedef typename TestFixture::edges_size_type    edges_size_type;
+
+    graph_type g;
+
+    for (int i=0; i<100; i++)
+        vertex_descriptor vdA = add_vertex(g);
+
+    for (int i=0; i<100; i++) {
+        vertex_descriptor vdA = vertex(i, g);
+
+        for (int j=0; j<100; j++) {
+            vertex_descriptor vdB = vertex(j, g);
+
+            pair<edge_descriptor, bool> p1 = add_edge(vdA, vdB, g);
+            if (i > j)
+                ASSERT_EQ(false, p1.second);
+            else
+                ASSERT_EQ(true, p1.second);
+
+            pair<edge_descriptor, bool> p2 = add_edge(vdB, vdA, g);
+            if (i >= j)
+                ASSERT_EQ(false, p2.second);
+            else
+                ASSERT_EQ(true, p2.second);
+        }
+    }
+
+    for (int i=0; i<100; i++) {
+        vertex_descriptor vdA = vertex(i, g);
+        for (int j=0; j<100; j++) {
+            vertex_descriptor vdB = vertex(j, g);
+            ASSERT_TRUE(edge(vdA, vdB, g).second);
+            ASSERT_TRUE(edge(vdB, vdA, g).second);
+        }
+    }
+}
+
 TYPED_TEST(TestGraph, add_edge_3) {
     typedef typename TestFixture::graph_type         graph_type;
     typedef typename TestFixture::vertex_descriptor  vertex_descriptor;
