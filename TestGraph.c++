@@ -54,7 +54,48 @@ typedef Types<
 
 TYPED_TEST_CASE(TestGraph, graph_types);
 
+TYPED_TEST(TestGraph, add_vertex_1) {
+    typedef typename TestFixture::graph_type         graph_type;
+    typedef typename TestFixture::vertex_descriptor  vertex_descriptor;
+
+    graph_type g;
+
+    for (int i=0; i<100; i++) {
+        vertex_descriptor vdA = add_vertex(g);
+
+        ASSERT_EQ(i, vdA);
+    }
+}
+
+TYPED_TEST(TestGraph, num_vertex_1) {
+    typedef typename TestFixture::graph_type         graph_type;
+    typedef typename TestFixture::vertices_size_type vertices_size_type;
+
+    graph_type g;
+
+    for (int i=0; i<100; i++) {
+        add_vertex(g);
+    }
+
+    vertices_size_type vs = num_vertices(g);
+    ASSERT_EQ(100, vs);
+}
+
 TYPED_TEST(TestGraph, vertex_1) {
+    typedef typename TestFixture::graph_type         graph_type;
+    typedef typename TestFixture::vertex_descriptor  vertex_descriptor;
+
+    graph_type g;
+
+    for (int i=0; i<100; i++) {
+        add_vertex(g);
+    }
+
+    vertex_descriptor vd = vertex(55, g);
+    ASSERT_EQ(55, vd);
+}
+
+TYPED_TEST(TestGraph, vertex_2) {
     typedef typename TestFixture::graph_type         graph_type;
     typedef typename TestFixture::vertex_descriptor  vertex_descriptor;
     typedef typename TestFixture::edge_descriptor    edge_descriptor;
@@ -78,7 +119,7 @@ TYPED_TEST(TestGraph, vertex_1) {
         }
 
         vertices_size_type vs = num_vertices(g);
-        ASSERT_EQ(1, vs);
+        ASSERT_EQ(i+1, vs);
     }
 }
 

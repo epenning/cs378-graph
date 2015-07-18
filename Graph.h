@@ -28,7 +28,7 @@ class Graph {
         // typedefs
         // --------
 
-        typedef int                                         vertex_descriptor;  // fix!
+        typedef int                                         vertex_descriptor;  
         typedef pair<vertex_descriptor, vertex_descriptor>  edge_descriptor;
         typedef vector<edge_descriptor>                     edge_vec;
         typedef pair<vertex_descriptor, edge_vec>           vertex;
@@ -48,9 +48,14 @@ class Graph {
         // --------
 
         /**
-         * <your documentation>
+         * Adds edge (u,v) to the graph and returns the edge descriptor for the new edge.
+         * @param u    source vertex of the new edge
+         * @param v    target vertex of the new edge
+         * @param g    graph in which to add new edge
+         * @return     pair where first is new edge
+         *                        second is true if edge was added, false if edge already existed 
          */
-        friend std::pair<edge_descriptor, bool> add_edge (vertex_descriptor, vertex_descriptor, Graph&) {
+        friend std::pair<edge_descriptor, bool> add_edge (vertex_descriptor u, vertex_descriptor v, Graph&) {
             // <your code>
             edge_descriptor ed = edge_descriptor(0,0);
             bool            b  = false;
@@ -61,7 +66,9 @@ class Graph {
         // ----------
 
         /**
-         * <your documentation>
+         * Adds a vertex to the graph and returns the vertex descriptor for the new vertex.
+         * @param g    graph in which to add new vertex
+         * @return     new vertex's descriptor
          */
         friend vertex_descriptor add_vertex (Graph& g) {
             vertex_descriptor v = g.next_vid;
@@ -76,9 +83,11 @@ class Graph {
         // -----------------
 
         /**
-         * <your documentation>
+         * @param u    a vertex
+         * @param g    a graph
+         * @return     an iterator-range providing access to the vertices adjacent to vertex u in graph g
          */
-        friend std::pair<adjacency_iterator, adjacency_iterator> adjacent_vertices (vertex_descriptor, const Graph&) {
+        friend std::pair<adjacency_iterator, adjacency_iterator> adjacent_vertices (vertex_descriptor u, const Graph& g) {
             // <your code>
             static int a [] = {0, 0};     // dummy data
             adjacency_iterator b = a;
@@ -90,9 +99,13 @@ class Graph {
         // ----
 
         /**
-         * <your documentation>
+         * @param u    a source vertex
+         * @param v    a target vertex
+         * @param g    a graph
+         * @return     pair where first is edge
+         *                        second is true if edge existed, false otherwise
          */
-        friend std::pair<edge_descriptor, bool> edge (vertex_descriptor, vertex_descriptor, const Graph&) {
+        friend std::pair<edge_descriptor, bool> edge (vertex_descriptor u, vertex_descriptor v, const Graph& g) {
             // <your code>
             edge_descriptor ed = edge_descriptor(0,0);
             bool            b  = true;
@@ -103,9 +116,10 @@ class Graph {
         // -----
 
         /**
-         * <your documentation>
+         * @param g    a graph
+         * @return     an iterator-range providing access to the edges in graph g
          */
-        friend std::pair<edge_iterator, edge_iterator> edges (const Graph&) {
+        friend std::pair<edge_iterator, edge_iterator> edges (const Graph& g) {
             // <your code>
             vector<edge_descriptor> a(2);     // dummy data
             edge_iterator b = a.begin();
@@ -117,9 +131,10 @@ class Graph {
         // ---------
 
         /**
-         * <your documentation>
+         * @param g    a graph
+         * @return     the number of edges in graph g
          */
-        friend edges_size_type num_edges (const Graph&) {
+        friend edges_size_type num_edges (const Graph& g) {
             // <your code>
             edges_size_type s = 1; // fix
             return s;}
@@ -129,11 +144,11 @@ class Graph {
         // ------------
 
         /**
-         * <your documentation>
+         * @param g    a graph
+         * @return     the number of vertices in graph g
          */
-        friend vertices_size_type num_vertices (const Graph&) {
-            // <your code>
-            vertices_size_type s = 1; // fix
+        friend vertices_size_type num_vertices (const Graph& g) {
+            vertices_size_type s = g.adjacency.size(); // fix
             return s;}
 
         // ------
@@ -141,9 +156,11 @@ class Graph {
         // ------
 
         /**
-         * <your documentation>
+         * @param e    an edge
+         * @param g    a graph
+         * @return     the source vertex of edge e in graph g
          */
-        friend vertex_descriptor source (edge_descriptor, const Graph&) {
+        friend vertex_descriptor source (edge_descriptor e, const Graph& g) {
             // <your code>
             vertex_descriptor v = 0; // fix
             return v;}
@@ -153,7 +170,9 @@ class Graph {
         // ------
 
         /**
-         * <your documentation>
+         * @param e    an edge
+         * @param g    a graph
+         * @return     the target vertex of edge e in graph g
          */
         friend vertex_descriptor target (edge_descriptor, const Graph&) {
             // <your code>
@@ -165,11 +184,12 @@ class Graph {
         // ------
 
         /**
-         * <your documentation>
+         * @param n    an index
+         * @param g    a graph
+         * @return     the nth vertex in the graph's vertex list
          */
-        friend vertex_descriptor vertex (vertices_size_type i, const Graph& g) {
-            // <your code>
-            vertex_descriptor vd = g.adjacency[i].first;
+        friend vertex_descriptor vertex (vertices_size_type n, const Graph& g) {
+            vertex_descriptor vd = g.adjacency[n].first;
             return vd;}
 
         // --------
@@ -177,7 +197,8 @@ class Graph {
         // --------
 
         /**
-         * <your documentation>
+         * @param g    a graph
+         * @return     an iterator-range providing access to the vertex set of graph g
          */
         friend std::pair<vertex_iterator, vertex_iterator> vertices (const Graph&) {
             // <your code>
@@ -216,7 +237,7 @@ class Graph {
         // -----
 
         /**
-         * <your documentation>
+         * Check that the contained list is valid.
          */
         bool valid () const {
             // <your code>
@@ -228,7 +249,7 @@ class Graph {
         // ------------
 
         /**
-         * <your documentation>
+         * Default constructor. Creates an empty graph object with zero vertices and zero edges.
          */
         Graph () {
             adjacency = vector<pair<vertex_descriptor, vector<edge_descriptor>>>();
