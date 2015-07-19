@@ -1,20 +1,20 @@
-==21326== Memcheck, a memory error detector
-==21326== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==21326== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==21326== Command: ./TestGraph
-==21326== 
+==13107== Memcheck, a memory error detector
+==13107== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==13107== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==13107== Command: ./TestGraph
+==13107== 
 Running main() from gtest_main.cc
-[==========] Running 50 tests from 2 test cases.
+[==========] Running 72 tests from 2 test cases.
 [----------] Global test environment set-up.
-[----------] 25 tests from TestGraph/0, where TypeParam = boost::adjacency_list<boost::setS, boost::vecS, boost::directedS, boost::no_property, boost::no_property, boost::no_property, boost::listS>
+[----------] 36 tests from TestGraph/0, where TypeParam = boost::adjacency_list<boost::setS, boost::vecS, boost::directedS, boost::no_property, boost::no_property, boost::no_property, boost::listS>
 [ RUN      ] TestGraph/0.add_vertex_1
 [       OK ] TestGraph/0.add_vertex_1 (36 ms)
 [ RUN      ] TestGraph/0.num_vertex_1
-[       OK ] TestGraph/0.num_vertex_1 (6 ms)
+[       OK ] TestGraph/0.num_vertex_1 (5 ms)
 [ RUN      ] TestGraph/0.vertex_1
-[       OK ] TestGraph/0.vertex_1 (6 ms)
+[       OK ] TestGraph/0.vertex_1 (3 ms)
 [ RUN      ] TestGraph/0.vertex_2
-[       OK ] TestGraph/0.vertex_2 (14 ms)
+[       OK ] TestGraph/0.vertex_2 (15 ms)
 [ RUN      ] TestGraph/0.test_vertex
 [       OK ] TestGraph/0.test_vertex (3 ms)
 [ RUN      ] TestGraph/0.vertices_1
@@ -26,40 +26,62 @@ Running main() from gtest_main.cc
 [ RUN      ] TestGraph/0.vertices_4
 [       OK ] TestGraph/0.vertices_4 (7 ms)
 [ RUN      ] TestGraph/0.vertices_5
-[       OK ] TestGraph/0.vertices_5 (10 ms)
+[       OK ] TestGraph/0.vertices_5 (9 ms)
 [ RUN      ] TestGraph/0.test_vertices
-[       OK ] TestGraph/0.test_vertices (4 ms)
+[       OK ] TestGraph/0.test_vertices (6 ms)
 [ RUN      ] TestGraph/0.add_edge_1
-[       OK ] TestGraph/0.add_edge_1 (27 ms)
+[       OK ] TestGraph/0.add_edge_1 (26 ms)
 [ RUN      ] TestGraph/0.source_1
-[       OK ] TestGraph/0.source_1 (2 ms)
+[       OK ] TestGraph/0.source_1 (3 ms)
 [ RUN      ] TestGraph/0.source_2
-[       OK ] TestGraph/0.source_2 (3 ms)
+[       OK ] TestGraph/0.source_2 (4 ms)
 [ RUN      ] TestGraph/0.target_1
 [       OK ] TestGraph/0.target_1 (3 ms)
 [ RUN      ] TestGraph/0.target_2
 [       OK ] TestGraph/0.target_2 (4 ms)
 [ RUN      ] TestGraph/0.adjacent_vertices_1
 [       OK ] TestGraph/0.adjacent_vertices_1 (15 ms)
+[ RUN      ] TestGraph/0.adjacent_vertices_2
+[       OK ] TestGraph/0.adjacent_vertices_2 (7 ms)
+[ RUN      ] TestGraph/0.adjacent_vertices_3
+[       OK ] TestGraph/0.adjacent_vertices_3 (5638 ms)
 [ RUN      ] TestGraph/0.test_adjacent_vertices
-[       OK ] TestGraph/0.test_adjacent_vertices (13 ms)
+[       OK ] TestGraph/0.test_adjacent_vertices (6 ms)
 [ RUN      ] TestGraph/0.edge_1
-[       OK ] TestGraph/0.edge_1 (13 ms)
+[       OK ] TestGraph/0.edge_1 (5 ms)
 [ RUN      ] TestGraph/0.add_edge_2
-[       OK ] TestGraph/0.add_edge_2 (6 ms)
+[       OK ] TestGraph/0.add_edge_2 (5 ms)
 [ RUN      ] TestGraph/0.num_edges_1
 [       OK ] TestGraph/0.num_edges_1 (8 ms)
 [ RUN      ] TestGraph/0.edge_3
-[       OK ] TestGraph/0.edge_3 (1487 ms)
+[       OK ] TestGraph/0.edge_3 (1483 ms)
+[ RUN      ] TestGraph/0.num_edges_2
+[       OK ] TestGraph/0.num_edges_2 (897 ms)
+[ RUN      ] TestGraph/0.num_edges_3
+[       OK ] TestGraph/0.num_edges_3 (1687 ms)
 [ RUN      ] TestGraph/0.add_edge_3
 [       OK ] TestGraph/0.add_edge_3 (4 ms)
+[ RUN      ] TestGraph/0.add_edge_4
+[       OK ] TestGraph/0.add_edge_4 (3 ms)
+[ RUN      ] TestGraph/0.add_edge_5
+[       OK ] TestGraph/0.add_edge_5 (3 ms)
+[ RUN      ] TestGraph/0.add_edge_6
+[       OK ] TestGraph/0.add_edge_6 (3 ms)
+[ RUN      ] TestGraph/0.edge_4
+[       OK ] TestGraph/0.edge_4 (3166 ms)
 [ RUN      ] TestGraph/0.test_edge
 [       OK ] TestGraph/0.test_edge (6 ms)
+[ RUN      ] TestGraph/0.edges_1
+[       OK ] TestGraph/0.edges_1 (19 ms)
+[ RUN      ] TestGraph/0.edges_2
+[       OK ] TestGraph/0.edges_2 (8 ms)
+[ RUN      ] TestGraph/0.edges_3
+[       OK ] TestGraph/0.edges_3 (3237 ms)
 [ RUN      ] TestGraph/0.test_edges
-[       OK ] TestGraph/0.test_edges (22 ms)
-[----------] 25 tests from TestGraph/0 (1727 ms total)
+[       OK ] TestGraph/0.test_edges (6 ms)
+[----------] 36 tests from TestGraph/0 (16358 ms total)
 
-[----------] 25 tests from TestGraph/1, where TypeParam = Graph
+[----------] 36 tests from TestGraph/1, where TypeParam = Graph
 [ RUN      ] TestGraph/1.add_vertex_1
 [       OK ] TestGraph/1.add_vertex_1 (41 ms)
 [ RUN      ] TestGraph/1.num_vertex_1
@@ -83,58 +105,80 @@ Running main() from gtest_main.cc
 [ RUN      ] TestGraph/1.test_vertices
 [       OK ] TestGraph/1.test_vertices (5 ms)
 [ RUN      ] TestGraph/1.add_edge_1
-[       OK ] TestGraph/1.add_edge_1 (19 ms)
+[       OK ] TestGraph/1.add_edge_1 (21 ms)
 [ RUN      ] TestGraph/1.source_1
 [       OK ] TestGraph/1.source_1 (3 ms)
 [ RUN      ] TestGraph/1.source_2
-[       OK ] TestGraph/1.source_2 (8 ms)
+[       OK ] TestGraph/1.source_2 (7 ms)
 [ RUN      ] TestGraph/1.target_1
 [       OK ] TestGraph/1.target_1 (3 ms)
 [ RUN      ] TestGraph/1.target_2
-[       OK ] TestGraph/1.target_2 (4 ms)
+[       OK ] TestGraph/1.target_2 (5 ms)
 [ RUN      ] TestGraph/1.adjacent_vertices_1
 [       OK ] TestGraph/1.adjacent_vertices_1 (3 ms)
+[ RUN      ] TestGraph/1.adjacent_vertices_2
+[       OK ] TestGraph/1.adjacent_vertices_2 (4 ms)
+[ RUN      ] TestGraph/1.adjacent_vertices_3
+[       OK ] TestGraph/1.adjacent_vertices_3 (2560 ms)
 [ RUN      ] TestGraph/1.test_adjacent_vertices
 [       OK ] TestGraph/1.test_adjacent_vertices (7 ms)
 [ RUN      ] TestGraph/1.edge_1
-[       OK ] TestGraph/1.edge_1 (6 ms)
+[       OK ] TestGraph/1.edge_1 (5 ms)
 [ RUN      ] TestGraph/1.add_edge_2
 [       OK ] TestGraph/1.add_edge_2 (5 ms)
 [ RUN      ] TestGraph/1.num_edges_1
-[       OK ] TestGraph/1.num_edges_1 (4 ms)
+[       OK ] TestGraph/1.num_edges_1 (6 ms)
 [ RUN      ] TestGraph/1.edge_3
-[       OK ] TestGraph/1.edge_3 (2805 ms)
+[       OK ] TestGraph/1.edge_3 (2776 ms)
+[ RUN      ] TestGraph/1.num_edges_2
+[       OK ] TestGraph/1.num_edges_2 (1740 ms)
+[ RUN      ] TestGraph/1.num_edges_3
+[       OK ] TestGraph/1.num_edges_3 (2797 ms)
 [ RUN      ] TestGraph/1.add_edge_3
 [       OK ] TestGraph/1.add_edge_3 (4 ms)
+[ RUN      ] TestGraph/1.add_edge_4
+[       OK ] TestGraph/1.add_edge_4 (5 ms)
+[ RUN      ] TestGraph/1.add_edge_5
+[       OK ] TestGraph/1.add_edge_5 (3 ms)
+[ RUN      ] TestGraph/1.add_edge_6
+[       OK ] TestGraph/1.add_edge_6 (3 ms)
+[ RUN      ] TestGraph/1.edge_4
+[       OK ] TestGraph/1.edge_4 (2781 ms)
 [ RUN      ] TestGraph/1.test_edge
 [       OK ] TestGraph/1.test_edge (7 ms)
+[ RUN      ] TestGraph/1.edges_1
+[       OK ] TestGraph/1.edges_1 (4 ms)
+[ RUN      ] TestGraph/1.edges_2
+[       OK ] TestGraph/1.edges_2 (3 ms)
+[ RUN      ] TestGraph/1.edges_3
+[       OK ] TestGraph/1.edges_3 (2281 ms)
 [ RUN      ] TestGraph/1.test_edges
-[       OK ] TestGraph/1.test_edges (6 ms)
-[----------] 25 tests from TestGraph/1 (3005 ms total)
+[       OK ] TestGraph/1.test_edges (7 ms)
+[----------] 36 tests from TestGraph/1 (15158 ms total)
 
 [----------] Global test environment tear-down
-[==========] 50 tests from 2 test cases ran. (4758 ms total)
-[  PASSED  ] 50 tests.
-==21326== 
-==21326== HEAP SUMMARY:
-==21326==     in use at exit: 0 bytes in 0 blocks
-==21326==   total heap usage: 71,858 allocs, 71,858 frees, 1,940,555 bytes allocated
-==21326== 
-==21326== All heap blocks were freed -- no leaks are possible
-==21326== 
-==21326== For counts of detected and suppressed errors, rerun with: -v
-==21326== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 72 tests from 2 test cases ran. (31542 ms total)
+[  PASSED  ] 72 tests.
+==13107== 
+==13107== HEAP SUMMARY:
+==13107==     in use at exit: 0 bytes in 0 blocks
+==13107==   total heap usage: 362,580 allocs, 362,580 frees, 9,498,364 bytes allocated
+==13107== 
+==13107== All heap blocks were freed -- no leaks are possible
+==13107== 
+==13107== For counts of detected and suppressed errors, rerun with: -v
+==13107== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'TestGraph.c++'
-Lines executed:100.00% of 283
-Branches executed:62.13% of 2408
-Taken at least once:32.48% of 2408
-Calls executed:45.10% of 2104
+Lines executed:100.00% of 443
+Branches executed:62.46% of 3708
+Taken at least once:33.44% of 3708
+Calls executed:44.76% of 3188
 Creating 'TestGraph.c++.gcov'
 
 File 'Graph.h'
-Lines executed:100.00% of 72
-Branches executed:100.00% of 34
-Taken at least once:55.88% of 34
-Calls executed:84.21% of 57
+Lines executed:100.00% of 76
+Branches executed:100.00% of 48
+Taken at least once:66.67% of 48
+Calls executed:85.48% of 62
 Creating 'Graph.h.gcov'
 

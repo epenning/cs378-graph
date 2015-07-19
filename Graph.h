@@ -72,22 +72,6 @@ class Graph {
         typedef typename edge_set::iterator                   edge_iterator;
         typedef typename edge_set::iterator                   adjacency_iterator;
 
-
-/*
-        // -------------
-        // edge_iterator
-        // -------------
-
-        class edge_iterator : vertex_vec::iterator {
-            public:
-                inline edge_iterator(vertex_vec::iterator const &that)
-                    : vertex_vec::iterator(that) {}
-                vertex_descriptor operator * () {
-                    const vertex_rep& v = vertex_vec::iterator::operator*();
-                    return v.first;
-                }
-        };*/
-
     public:
         // --------
         // add_edge
@@ -113,6 +97,8 @@ class Graph {
             // add edge to edge set of u
             vertex_vec* vertices = &(g.adjacency);
             // TO DO LATER - if u or v > size of adjacency, add vertices until <
+            while (num_vertices(g) <= u || num_vertices(g) <= v)
+                add_vertex(g);
             vertex_rep& u_vertex = (*vertices)[u];
             edge_set&   u_edges  = u_vertex.second;
             u_edges.insert(ed);
@@ -172,10 +158,16 @@ class Graph {
         friend std::pair<edge_descriptor, bool> edge (vertex_descriptor u, vertex_descriptor v, const Graph& g) {
             edge_descriptor ed = make_pair(u,v);
             bool            b  = false;
-            // if u->v is in adjacent vertices to u, b is true
-            pair<adjacency_iterator, adjacency_iterator> adj = adjacent_vertices(u, g);
-            if (adj.second != find(adj.first, adj.second, ed))
-                b = true;
+            // if u or v is not in g, b is false
+            if (num_vertices(g) <= u || num_vertices(g) <= v) {
+                b = false;
+            }
+            else {
+                // if u->v is in adjacent vertices to u, b is true
+                pair<adjacency_iterator, adjacency_iterator> adj = adjacent_vertices(u, g);
+                if (adj.second != find(adj.first, adj.second, ed))
+                    b = true;
+            }
             return make_pair(ed, b);}
 
         // -----
