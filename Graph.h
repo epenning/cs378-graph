@@ -34,9 +34,9 @@ class Graph {
 
         typedef vertices_size_type                            vertex_descriptor; 
 
-        // ----------
-        // vertex_rep
-        // ----------
+        // ---------------
+        // edge_descriptor
+        // ---------------
 
         class edge_descriptor : public pair<vertex_descriptor, vertex_descriptor> {
         public:
@@ -49,16 +49,16 @@ class Graph {
         // typedefs cont.
         // --------------
 
-        typedef vector<edge_descriptor>                       edge_vec;
+        typedef set<edge_descriptor>                       edge_set;
 
         // ----------
         // vertex_rep
         // ----------
 
-        class vertex_rep : public pair<vertex_descriptor, edge_vec> {
+        class vertex_rep : public pair<vertex_descriptor, edge_set> {
         public:
-            inline vertex_rep(pair<vertex_descriptor, edge_vec> const &that = make_pair(vertex_descriptor(), edge_vec()))
-                : pair<vertex_descriptor, edge_vec>(that) {}
+            inline vertex_rep(pair<vertex_descriptor, edge_set> const &that = make_pair(vertex_descriptor(), edge_set()))
+                : pair<vertex_descriptor, edge_set>(that) {}
             operator vertex_descriptor() const { return first; }
         };
 
@@ -69,8 +69,8 @@ class Graph {
         typedef vector<vertex_rep>                            vertex_vec;
 
         typedef typename vertex_vec::iterator                 vertex_iterator;
-        typedef typename edge_vec::iterator                   edge_iterator;
-        typedef typename edge_vec::iterator                   adjacency_iterator;
+        typedef typename edge_set::iterator                   edge_iterator;
+        typedef typename edge_set::iterator                   adjacency_iterator;
 
 
 /*
@@ -110,12 +110,15 @@ class Graph {
             if (b) {
                 return make_pair(ed, false);
             }
-            // add edge to edge vector of u
+            // add edge to edge set of u
             vertex_vec* vertices = &(g.adjacency);
             // TO DO LATER - if u or v > size of adjacency, add vertices until <
             vertex_rep& u_vertex = (*vertices)[u];
-            edge_vec&   u_edges  = u_vertex.second;
-            u_edges.push_back(ed);
+            edge_set&   u_edges  = u_vertex.second;
+            u_edges.insert(ed);
+            // insert new edge into set of all edges in g
+            g.all_edges.insert(ed);
+            assert(g.valid());
             return make_pair(ed, true);}
 
         // ----------
@@ -131,8 +134,9 @@ class Graph {
             vertex_descriptor v = g.next_vid;
             g.next_vid++;
 
-            g.adjacency.push_back(vertex_rep(make_pair(v, edge_vec())));
+            g.adjacency.push_back(vertex_rep(make_pair(v, edge_set())));
 
+            assert(g.valid());
             return v;}
 
         // -----------------
@@ -149,9 +153,9 @@ class Graph {
             const vertex_vec* vertices = &(g.adjacency);
             // TO DO LATER - if u or v > size of adjacency, add vertices until <
             const vertex_rep* u_vertex = &(*vertices)[u];
-            const edge_vec*   u_edges  = &u_vertex->second;
-            adjacency_iterator b = const_cast<edge_vec*>(u_edges)->begin();
-            adjacency_iterator e = const_cast<edge_vec*>(u_edges)->end();
+            const edge_set*   u_edges  = &u_vertex->second;
+            adjacency_iterator b = const_cast<edge_set*>(u_edges)->begin();
+            adjacency_iterator e = const_cast<edge_set*>(u_edges)->end();
             return make_pair(b, e);}
 
         // ----
@@ -183,11 +187,9 @@ class Graph {
          * @return     an iterator-range providing access to the edges in graph g
          */
         friend std::pair<edge_iterator, edge_iterator> edges (const Graph& g) {
-            // <your code>
-            edge_vec a(2);     // dummy data
-            edge_iterator b = a.begin();
-            edge_iterator e = a.end();
-            return std::make_pair(b, e);}
+            edge_iterator b = g.all_edges.cbegin();
+            edge_iterator e = g.all_edges.cend();
+            return make_pair(b, e);}
 
         // ---------
         // num_edges
@@ -198,8 +200,7 @@ class Graph {
          * @return     the number of edges in graph g
          */
         friend edges_size_type num_edges (const Graph& g) {
-            // <your code>
-            edges_size_type s = 1; // fix
+            edges_size_type s = g.all_edges.size();
             return s;}
 
         // ------------
@@ -211,7 +212,7 @@ class Graph {
          * @return     the number of vertices in graph g
          */
         friend vertices_size_type num_vertices (const Graph& g) {
-            vertices_size_type s = g.adjacency.size(); // fix
+            vertices_size_type s = g.adjacency.size();
             return s;}
 
         // ------
@@ -277,8 +278,8 @@ class Graph {
          *  Adjacency List Representation
          *
          *  [
-         *      ( vertex A, [ edge A->B, edge A->C ] )
-         *      ( vertex B, [                      ] )
+         *      ( vertex A, [ edge A->B, edge A->C ] ),
+         *      ( vertex B, [                      ] ),
          *      ( vertex C, [ edge C->B            ] )
          *  ]
          *
@@ -289,8 +290,9 @@ class Graph {
          *      B <-- C
          */
 
-        vertex_vec adjacency;
+        vertex_vec        adjacency;
         vertex_descriptor next_vid;
+        edge_set          all_edges;
 
         // -----
         // valid
@@ -300,7 +302,38 @@ class Graph {
          * Check that the contained list is valid.
          */
         bool valid () const {
-            // <your code>
+            //cout << "valid check" << endl;
+/*            for (vertex_rep v : adjacency) {
+                //cout << "check vid " << v.first << endl;
+                // no vertex descriptors should be next vid or higher
+                if (v.first >= next_vid) {
+                    return false;
+                }
+                {
+                    // each vertex descriptor should appear only once
+                    pair<vertex_iterator, vertex_iterator> a = vertices(*this);
+                    vertex_iterator b = a.first;
+                    vertex_iterator e = a.second;
+                    if (count(b, e, v.first) > 1) {
+                        return false;
+                    }
+                }
+                {
+                    // each edge descriptor should have correct source and non-repeating target
+                    for (edge_descriptor ed : v.second) {
+                        //cout << "check eid " << ed.first << ", " << ed.second << endl;
+                        if (source(ed, *this) != v.first) {
+                            return false;
+                        }
+                        pair<adjacency_iterator, adjacency_iterator> a = adjacent_vertices(v.first, *this);
+                        adjacency_iterator b = a.first;
+                        adjacency_iterator e = a.second;
+                        if (count(b, e, ed.second) > 1) {
+                            return false;
+                        }
+                    }
+                }
+            }*/
             return true;}
 
     public:
@@ -314,12 +347,14 @@ class Graph {
         Graph () {
             adjacency = vertex_vec();
             next_vid = vertex_descriptor();
+            all_edges = edge_set();
             assert(valid());}
 
         // Default copy, destructor, and copy assignment
         // Graph  (const Graph<T>&);
         // ~Graph ();
         // Graph& operator = (const Graph&);
+
     };
 
 #endif // Graph_h

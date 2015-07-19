@@ -1,26 +1,26 @@
-==23018== Memcheck, a memory error detector
-==23018== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==23018== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==23018== Command: ./TestGraph
-==23018== 
+==21326== Memcheck, a memory error detector
+==21326== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==21326== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==21326== Command: ./TestGraph
+==21326== 
 Running main() from gtest_main.cc
 [==========] Running 50 tests from 2 test cases.
 [----------] Global test environment set-up.
 [----------] 25 tests from TestGraph/0, where TypeParam = boost::adjacency_list<boost::setS, boost::vecS, boost::directedS, boost::no_property, boost::no_property, boost::no_property, boost::listS>
 [ RUN      ] TestGraph/0.add_vertex_1
-[       OK ] TestGraph/0.add_vertex_1 (34 ms)
+[       OK ] TestGraph/0.add_vertex_1 (36 ms)
 [ RUN      ] TestGraph/0.num_vertex_1
 [       OK ] TestGraph/0.num_vertex_1 (6 ms)
 [ RUN      ] TestGraph/0.vertex_1
-[       OK ] TestGraph/0.vertex_1 (4 ms)
+[       OK ] TestGraph/0.vertex_1 (6 ms)
 [ RUN      ] TestGraph/0.vertex_2
-[       OK ] TestGraph/0.vertex_2 (13 ms)
+[       OK ] TestGraph/0.vertex_2 (14 ms)
 [ RUN      ] TestGraph/0.test_vertex
 [       OK ] TestGraph/0.test_vertex (3 ms)
 [ RUN      ] TestGraph/0.vertices_1
 [       OK ] TestGraph/0.vertices_1 (7 ms)
 [ RUN      ] TestGraph/0.vertices_2
-[       OK ] TestGraph/0.vertices_2 (3 ms)
+[       OK ] TestGraph/0.vertices_2 (4 ms)
 [ RUN      ] TestGraph/0.vertices_3
 [       OK ] TestGraph/0.vertices_3 (5 ms)
 [ RUN      ] TestGraph/0.vertices_4
@@ -30,9 +30,9 @@ Running main() from gtest_main.cc
 [ RUN      ] TestGraph/0.test_vertices
 [       OK ] TestGraph/0.test_vertices (4 ms)
 [ RUN      ] TestGraph/0.add_edge_1
-[       OK ] TestGraph/0.add_edge_1 (25 ms)
+[       OK ] TestGraph/0.add_edge_1 (27 ms)
 [ RUN      ] TestGraph/0.source_1
-[       OK ] TestGraph/0.source_1 (3 ms)
+[       OK ] TestGraph/0.source_1 (2 ms)
 [ RUN      ] TestGraph/0.source_2
 [       OK ] TestGraph/0.source_2 (3 ms)
 [ RUN      ] TestGraph/0.target_1
@@ -40,54 +40,54 @@ Running main() from gtest_main.cc
 [ RUN      ] TestGraph/0.target_2
 [       OK ] TestGraph/0.target_2 (4 ms)
 [ RUN      ] TestGraph/0.adjacent_vertices_1
-[       OK ] TestGraph/0.adjacent_vertices_1 (14 ms)
+[       OK ] TestGraph/0.adjacent_vertices_1 (15 ms)
 [ RUN      ] TestGraph/0.test_adjacent_vertices
-[       OK ] TestGraph/0.test_adjacent_vertices (12 ms)
+[       OK ] TestGraph/0.test_adjacent_vertices (13 ms)
 [ RUN      ] TestGraph/0.edge_1
 [       OK ] TestGraph/0.edge_1 (13 ms)
 [ RUN      ] TestGraph/0.add_edge_2
-[       OK ] TestGraph/0.add_edge_2 (5 ms)
+[       OK ] TestGraph/0.add_edge_2 (6 ms)
 [ RUN      ] TestGraph/0.num_edges_1
 [       OK ] TestGraph/0.num_edges_1 (8 ms)
 [ RUN      ] TestGraph/0.edge_3
-[       OK ] TestGraph/0.edge_3 (1379 ms)
+[       OK ] TestGraph/0.edge_3 (1487 ms)
 [ RUN      ] TestGraph/0.add_edge_3
-[       OK ] TestGraph/0.add_edge_3 (3 ms)
+[       OK ] TestGraph/0.add_edge_3 (4 ms)
 [ RUN      ] TestGraph/0.test_edge
-[       OK ] TestGraph/0.test_edge (7 ms)
+[       OK ] TestGraph/0.test_edge (6 ms)
 [ RUN      ] TestGraph/0.test_edges
-[       OK ] TestGraph/0.test_edges (21 ms)
-[----------] 25 tests from TestGraph/0 (1604 ms total)
+[       OK ] TestGraph/0.test_edges (22 ms)
+[----------] 25 tests from TestGraph/0 (1727 ms total)
 
 [----------] 25 tests from TestGraph/1, where TypeParam = Graph
 [ RUN      ] TestGraph/1.add_vertex_1
-[       OK ] TestGraph/1.add_vertex_1 (38 ms)
+[       OK ] TestGraph/1.add_vertex_1 (41 ms)
 [ RUN      ] TestGraph/1.num_vertex_1
-[       OK ] TestGraph/1.num_vertex_1 (7 ms)
+[       OK ] TestGraph/1.num_vertex_1 (6 ms)
 [ RUN      ] TestGraph/1.vertex_1
-[       OK ] TestGraph/1.vertex_1 (6 ms)
+[       OK ] TestGraph/1.vertex_1 (5 ms)
 [ RUN      ] TestGraph/1.vertex_2
 [       OK ] TestGraph/1.vertex_2 (16 ms)
 [ RUN      ] TestGraph/1.test_vertex
 [       OK ] TestGraph/1.test_vertex (3 ms)
 [ RUN      ] TestGraph/1.vertices_1
-[       OK ] TestGraph/1.vertices_1 (6 ms)
+[       OK ] TestGraph/1.vertices_1 (7 ms)
 [ RUN      ] TestGraph/1.vertices_2
 [       OK ] TestGraph/1.vertices_2 (3 ms)
 [ RUN      ] TestGraph/1.vertices_3
-[       OK ] TestGraph/1.vertices_3 (8 ms)
+[       OK ] TestGraph/1.vertices_3 (6 ms)
 [ RUN      ] TestGraph/1.vertices_4
-[       OK ] TestGraph/1.vertices_4 (9 ms)
+[       OK ] TestGraph/1.vertices_4 (8 ms)
 [ RUN      ] TestGraph/1.vertices_5
 [       OK ] TestGraph/1.vertices_5 (16 ms)
 [ RUN      ] TestGraph/1.test_vertices
 [       OK ] TestGraph/1.test_vertices (5 ms)
 [ RUN      ] TestGraph/1.add_edge_1
-[       OK ] TestGraph/1.add_edge_1 (18 ms)
+[       OK ] TestGraph/1.add_edge_1 (19 ms)
 [ RUN      ] TestGraph/1.source_1
 [       OK ] TestGraph/1.source_1 (3 ms)
 [ RUN      ] TestGraph/1.source_2
-[       OK ] TestGraph/1.source_2 (4 ms)
+[       OK ] TestGraph/1.source_2 (8 ms)
 [ RUN      ] TestGraph/1.target_1
 [       OK ] TestGraph/1.target_1 (3 ms)
 [ RUN      ] TestGraph/1.target_2
@@ -95,92 +95,46 @@ Running main() from gtest_main.cc
 [ RUN      ] TestGraph/1.adjacent_vertices_1
 [       OK ] TestGraph/1.adjacent_vertices_1 (3 ms)
 [ RUN      ] TestGraph/1.test_adjacent_vertices
-[       OK ] TestGraph/1.test_adjacent_vertices (9 ms)
+[       OK ] TestGraph/1.test_adjacent_vertices (7 ms)
 [ RUN      ] TestGraph/1.edge_1
-[       OK ] TestGraph/1.edge_1 (5 ms)
+[       OK ] TestGraph/1.edge_1 (6 ms)
 [ RUN      ] TestGraph/1.add_edge_2
-[       OK ] TestGraph/1.add_edge_2 (4 ms)
+[       OK ] TestGraph/1.add_edge_2 (5 ms)
 [ RUN      ] TestGraph/1.num_edges_1
-TestGraph.c++:545: Failure
-Value of: es
-  Actual: 1
-Expected: 0
-[  FAILED  ] TestGraph/1.num_edges_1, where TypeParam = Graph (30 ms)
+[       OK ] TestGraph/1.num_edges_1 (4 ms)
 [ RUN      ] TestGraph/1.edge_3
-[       OK ] TestGraph/1.edge_3 (1601 ms)
+[       OK ] TestGraph/1.edge_3 (2805 ms)
 [ RUN      ] TestGraph/1.add_edge_3
-[       OK ] TestGraph/1.add_edge_3 (3 ms)
+[       OK ] TestGraph/1.add_edge_3 (4 ms)
 [ RUN      ] TestGraph/1.test_edge
 [       OK ] TestGraph/1.test_edge (7 ms)
 [ RUN      ] TestGraph/1.test_edges
-==23018== Invalid read of size 8
-==23018==    at 0x429F4A: TestGraph_test_edges_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x472B42: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465D1C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465DB3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465EB4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x46612C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x46640D: testing::UnitTest::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x4050EF: main (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==  Address 0x614a8a8 is 8 bytes inside a block of size 32 free'd
-==23018==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==23018==    by 0x41F6DF: __gnu_cxx::new_allocator<Graph::edge_descriptor>::deallocate(Graph::edge_descriptor*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x41DD99: std::_Vector_base<Graph::edge_descriptor, std::allocator<Graph::edge_descriptor> >::_M_deallocate(Graph::edge_descriptor*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x4124E0: std::_Vector_base<Graph::edge_descriptor, std::allocator<Graph::edge_descriptor> >::~_Vector_base() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x4079C8: std::vector<Graph::edge_descriptor, std::allocator<Graph::edge_descriptor> >::~vector() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x407086: edges(Graph const&) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x429E97: TestGraph_test_edges_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x472B42: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465D1C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465DB3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465EB4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x46612C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018== 
-==23018== Invalid read of size 8
-==23018==    at 0x429F4E: TestGraph_test_edges_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x472B42: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465D1C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465DB3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465EB4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x46612C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x46640D: testing::UnitTest::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x4050EF: main (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==  Address 0x614a8a0 is 0 bytes inside a block of size 32 free'd
-==23018==    at 0x4C2C2BC: operator delete(void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==23018==    by 0x41F6DF: __gnu_cxx::new_allocator<Graph::edge_descriptor>::deallocate(Graph::edge_descriptor*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x41DD99: std::_Vector_base<Graph::edge_descriptor, std::allocator<Graph::edge_descriptor> >::_M_deallocate(Graph::edge_descriptor*, unsigned long) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x4124E0: std::_Vector_base<Graph::edge_descriptor, std::allocator<Graph::edge_descriptor> >::~_Vector_base() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x4079C8: std::vector<Graph::edge_descriptor, std::allocator<Graph::edge_descriptor> >::~vector() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x407086: edges(Graph const&) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x429E97: TestGraph_test_edges_Test<Graph>::TestBody() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x472B42: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465D1C: testing::Test::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465DB3: testing::TestInfo::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x465EB4: testing::TestCase::Run() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018==    by 0x46612C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/epenning/CS_378/cs378-graph/TestGraph)
-==23018== 
-TestGraph.c++:685: Failure
-Value of: ed
-  Actual: 0
-Expected: edAB
-Which is: 1
-[  FAILED  ] TestGraph/1.test_edges, where TypeParam = Graph (14 ms)
-[----------] 25 tests from TestGraph/1 (1829 ms total)
+[       OK ] TestGraph/1.test_edges (6 ms)
+[----------] 25 tests from TestGraph/1 (3005 ms total)
 
 [----------] Global test environment tear-down
-[==========] 50 tests from 2 test cases ran. (3458 ms total)
-[  PASSED  ] 48 tests.
-[  FAILED  ] 2 tests, listed below:
-[  FAILED  ] TestGraph/1.num_edges_1, where TypeParam = Graph
-[  FAILED  ] TestGraph/1.test_edges, where TypeParam = Graph
+[==========] 50 tests from 2 test cases ran. (4758 ms total)
+[  PASSED  ] 50 tests.
+==21326== 
+==21326== HEAP SUMMARY:
+==21326==     in use at exit: 0 bytes in 0 blocks
+==21326==   total heap usage: 71,858 allocs, 71,858 frees, 1,940,555 bytes allocated
+==21326== 
+==21326== All heap blocks were freed -- no leaks are possible
+==21326== 
+==21326== For counts of detected and suppressed errors, rerun with: -v
+==21326== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+File 'TestGraph.c++'
+Lines executed:100.00% of 283
+Branches executed:62.13% of 2408
+Taken at least once:32.48% of 2408
+Calls executed:45.10% of 2104
+Creating 'TestGraph.c++.gcov'
 
- 2 FAILED TESTS
-==23018== 
-==23018== HEAP SUMMARY:
-==23018==     in use at exit: 0 bytes in 0 blocks
-==23018==   total heap usage: 52,725 allocs, 52,725 frees, 1,346,904 bytes allocated
-==23018== 
-==23018== All heap blocks were freed -- no leaks are possible
-==23018== 
-==23018== For counts of detected and suppressed errors, rerun with: -v
-==23018== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+File 'Graph.h'
+Lines executed:100.00% of 72
+Branches executed:100.00% of 34
+Taken at least once:55.88% of 34
+Calls executed:84.21% of 57
+Creating 'Graph.h.gcov'
+
