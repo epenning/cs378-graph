@@ -243,7 +243,9 @@ class Graph {
          * @return     the nth vertex in the graph's vertex list
          */
         friend vertex_descriptor vertex (vertices_size_type n, const Graph& g) {
-            vertex_descriptor vd = g.adjacency[n].first;
+            vertex_descriptor vd = n;
+            if (g.adjacency.size() > n)
+                vd = g.adjacency[n].first;
             return vd;}
 
         // --------
