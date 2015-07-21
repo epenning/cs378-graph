@@ -1,0 +1,113 @@
+commit 3bc9bb5fb42bf9eefe9a97cd62cba02e0d371733
+Author: pieiscool <hashi10@gmail.com>
+Date:   Tue Jul 21 11:09:52 2015 -0500
+
+    updated .travis.yml for new build type
+
+commit 34d0b97e03b7e6957c926e68a7ec1fa926ebe070
+Author: pieiscool <hashi10@gmail.com>
+Date:   Tue Jul 21 11:03:11 2015 -0500
+
+    fixed unused typedefs and variables in test
+
+commit a7666ce85fd296aed7caf239921be38310ac2569
+Author: pieiscool <hashi10@gmail.com>
+Date:   Tue Jul 21 10:43:49 2015 -0500
+
+    fixed vertex() when n > num vertices
+
+commit 10d26bab2b851b10aad77c6a73083e0db43bcb75
+Author: pieiscool <hashi10@gmail.com>
+Date:   Sat Jul 18 23:03:19 2015 -0500
+
+    finished methods and tests, fixes #21
+
+commit 2d8306c922c8c69553e57ead26087b536c8b10d1
+Author: pieiscool <hashi10@gmail.com>
+Date:   Sat Jul 18 21:55:10 2015 -0500
+
+    finished edges fixes #17, fixes #15
+
+commit 69ef6d09eba722a3bc423b212091e01354ded8a7
+Author: pieiscool <hashi10@gmail.com>
+Date:   Sat Jul 18 13:55:02 2015 -0500
+
+    finished simplest edge and add_edge fixes #18, fixes #20
+
+commit 91a4b19252627f1c8a07bd477e9d699dc4e46dc5
+Author: pieiscool <hashi10@gmail.com>
+Date:   Sat Jul 18 13:27:14 2015 -0500
+
+    wrote and tested source and target
+
+commit a12b6a47a3f760b2452b31e4de6e2529c00ea9fc
+Author: pieiscool <hashi10@gmail.com>
+Date:   Sat Jul 18 12:40:06 2015 -0500
+
+    adjacency iterator and parts of add edge and edge, fixes #19
+
+commit fb84cb1c52dd2651d91af5d93bcb934351c0af54
+Author: pieiscool <hashi10@gmail.com>
+Date:   Sat Jul 18 11:51:52 2015 -0500
+
+    created vertex_rep class, vertex iterator works, fixes #16
+
+commit 935d2c7e758ea9b8fc800ffba7db3cef313a8de3
+Author: pieiscool <hashi10@gmail.com>
+Date:   Fri Jul 17 23:40:24 2015 -0500
+
+    fixed vertex iterator to work - made it a const iterator
+
+commit c1729ba72d16753d8d6fda07971ff6df95d8bf32
+Author: pieiscool <hashi10@gmail.com>
+Date:   Fri Jul 17 22:15:15 2015 -0500
+
+    vertex iterator can use vector iterator methods
+
+commit 72a8954e2ace16a52b391a8136ad8c9cc0e4f641
+Author: pieiscool <hashi10@gmail.com>
+Date:   Fri Jul 17 22:08:25 2015 -0500
+
+    wrote skeleton for graph iterators
+
+commit d3c812ff6b604b1a9261d4745a15a73b0dd0c460
+Author: pieiscool <hashi10@gmail.com>
+Date:   Fri Jul 17 21:07:05 2015 -0500
+
+    added documentation, wrote more tests fixes #14
+
+commit 371e761f3e2e4dd0af12245ec21f2e89961a30a1
+Author: pieiscool <hashi10@gmail.com>
+Date:   Thu Jul 16 14:04:56 2015 -0500
+
+    fixes #12 fixes #13 adjacency format, add_vertex and vertex
+
+commit 3a361a674d6d1673e8523e1cb237f5360916a48d
+Author: pieiscool <hashi10@gmail.com>
+Date:   Thu Jul 16 12:58:29 2015 -0500
+
+    fixes #11, flag was in wrong place
+
+commit 3a1cfb4da3d5e7aa382949d4b45550e2d631a414
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Thu Jul 16 12:30:37 2015 -0500
+
+    added -r flag for gcov
+
+commit a08d9a38126b9c6eff52b825e95a595387a7a9e1
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Thu Jul 16 12:27:37 2015 -0500
+
+    removed RunGraph from makefile
+
+commit de46bcf2117e1a226d89f8eeaae5c40797e232aa
+Author: Erin Pennington <epennington@utexas.edu>
+Date:   Thu Jul 16 12:20:59 2015 -0500
+
+    initial files
+
+commit 4ba6889f7cd833c85365a3e18efea1570efdcbcb
+Author: pieiscool <hashi10@gmail.com>
+Date:   Thu Jul 16 12:11:25 2015 -0500
+
+    Initial commit
