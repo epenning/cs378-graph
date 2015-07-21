@@ -1,24 +1,28 @@
-sudo: required
 language: cpp
-
 compiler: gcc
+sudo: false
 
-before_install:
-    - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-    - sudo apt-get update
+addons:
+  apt: 
+   sources: 
+      - ubuntu-toolchain-r-test
+   packages:
+      - gcc-4.8 
+      - g++-4.8
+      - clang
+      - doxygen
+      - valgrind
+      - libgtest-dev
+      - libboost-dev
 
-install:
-    - sudo apt-get install clang-3.4
-    - sudo apt-get install g++-4.8
-    - sudo apt-get install libgtest-dev
-    - cd /usr/src/gtest
-    - sudo cmake .
-    - sudo make
-    - sudo mv libg* /usr/local/lib/
+install: 
+    # Install gtest without sudo 
+    - mkdir ~/gtest && cd ~/gtest
+    - export LIBRARY_PATH=$(pwd)
+    - cp -r /usr/src/gtest/* ./
+    - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
+    - make
     - cd -
-    - sudo apt-get install libboost-all-dev
-    - sudo apt-get install valgrind
-    - sudo apt-get install doxygen
 
 before_script:
     - uname -a
